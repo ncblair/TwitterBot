@@ -2,6 +2,13 @@ from datetime import datetime
 from threading import Timer
 import tweepy
 import getQuote
+
+consumer_key = "PUT KEY HERE"
+consumer_secret = "PUT KEY HERE"
+
+access_token = "PUT KEY HERE"
+access_token_secret = "PUT KEY HERE"
+
 print(getQuote.get_quote())
 x = datetime.today()
 
