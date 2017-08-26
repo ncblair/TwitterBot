@@ -2,12 +2,8 @@ from datetime import datetime
 from threading import Timer
 import tweepy
 import getQuote
+import keys
 
-consumer_key = "PUT KEY HERE"
-consumer_secret = "PUT KEY HERE"
-
-access_token = "PUT KEY HERE"
-access_token_secret = "PUT KEY HERE"
 
 x = datetime.today()
 
@@ -16,14 +12,18 @@ delta_t = y - x
 
 secs = delta_t.seconds + 1
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
+auth.set_access_token(keys.access_token, keys.access_token_secret)
 
 api = tweepy.API(auth)
 
 def quote_of_the_day():
-    api.update_status(status = getQuote.get_quote())
-
+    quote = getQuote.get_quote()
+    while len(quote) > 140:
+        quote = getQuote.get_quote()
+    print(quote)
+    api.update_status(status = quote)
+quote_of_the_day()
 t = Timer(secs, quote_of_the_day)
 t.start()
 
