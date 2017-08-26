@@ -9,7 +9,6 @@ consumer_secret = "PUT KEY HERE"
 access_token = "PUT KEY HERE"
 access_token_secret = "PUT KEY HERE"
 
-print(getQuote.get_quote())
 x = datetime.today()
 
 y = x.replace(day=x.day+1, hour=12, minute=30, second=0, microsecond=0)
